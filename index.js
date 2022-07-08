@@ -1,6 +1,7 @@
 // "fs" is Node's native file system module.
 const fs = require('node:fs');
 
+
 // "path" is Node's native path utility module. It helps construct paths to access files and directories. Instead of manually writing './currentDirectory/fileYouWant' everywhere, one can instead use "path.join()"" and pass each path segment as an argument. Note however, you should omit '/' or other path segment joiners as these may be different depending on the operating system running your code. One of the advantages of the "path" module is that it automatically detects the operating system and uses the appropriate joiners.
 const path = require('node:path');
 
