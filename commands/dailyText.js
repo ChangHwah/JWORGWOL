@@ -1,16 +1,16 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
-const Cheerio = require('cheerio');
+const cheerio = require('cheerio');
+const axios = require('axios');
 
-const $ = Cheerio.load('<div><h2 class = "primary">First Header</h2><h2>Second Header</h2></div>');
-
-const scrape = () => { 
-    $('h2').each((idx, ref) => {
-    const elem = $(ref);
-    console.info(elem.text())
-    })
-};
-// console.info(firstHeader.text());
+const scrapeData = async () => {
+    const targetUrl = "https://wol.jw.org/en/wol/h/r1/lp-e";
+    const pageResponse = await axios.get(targetUrl);
+    const $ = cheerio.load(pageResponse.data);
+    let scrapeTest = $(`<div class="tabContent active>`);
+    console.log(scrapeTest.text());
+    return scrapeTest.text();
+}
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -18,6 +18,6 @@ module.exports = {
     .setDescription('Scrapes the web and returns the information.'),
     // What the Discord bot executes when the command is invoked
     async execute(interaction) {
-        await interaction.reply(scrape());
+        await interaction.reply(`Here is your result: ${await scrapeData()}`);
     },
 };
