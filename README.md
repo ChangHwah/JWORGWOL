@@ -1,2 +1,2 @@
 # JWORGWOL
- A repository for Jehovah's Witnesses to search anything on jw.org or wol.jw.org.
+ A repository for JWs to search anything on jw.org or wol.jw.org.
